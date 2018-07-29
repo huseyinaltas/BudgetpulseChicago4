@@ -2,6 +2,10 @@ package com.cbt.tests.dashboard;
 
 import static org.testng.Assert.assertTrue;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.cbt.pages.DashboardPage;
@@ -30,7 +34,15 @@ public class Dashboard extends TestBase {
 		assertTrue( dashboardPage.budgeted.isDisplayed());
 		assertTrue( dashboardPage.actualExpense.isDisplayed());
 		BrowserUtils.waitForVisibility(dashboardPage.upcomingExpense,5);
-		assertTrue( dashboardPage.upcomingExpense.isDisplayed());
+	
+//		List<WebElement> ls = Driver.getDriver().findElements(By.xpath(dashboardPage.upcomingExpense.getText()));
+//		assertTrue( dashboardPage.upcomingExpense.isDisplayed());
+		
+//		ls.stream().forEach(System.out::println);
+		
+		
+		
+		
 		
 	}
 
