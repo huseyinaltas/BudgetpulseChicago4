@@ -15,7 +15,7 @@ public class DashboardPage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
-	@FindBy(xpath = "//a[.='Dashboard']")
+	@FindBy(xpath = "//li[@class='first']/a")
 	public WebElement dashboard;
 
 	@FindBy(id = "select_budget_type")
@@ -27,7 +27,7 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@class='capsule capsule-neutral'][1]")
 	public WebElement actualExpense;
 
-	@FindBy(id = "/(//div[@class='capsule capsule-neutral']/span)[2]")
+	@FindBy(id = "(//div[@class='capsule capsule-neutral']/span)[2]")
 	public WebElement upcomingExpense;
 
 }

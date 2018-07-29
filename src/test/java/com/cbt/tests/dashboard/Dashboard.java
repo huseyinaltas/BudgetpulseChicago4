@@ -19,15 +19,17 @@ public class Dashboard extends TestBase {
 	public void budgetFunctionality() {
 		Driver.getDriver().get(ConfigurationReader.getProperty("url"));
 		homePage.loginBtn.click();
-		BrowserUtils.waitFor(5);
+		BrowserUtils.waitForVisibility(homePage.email, 5);
 		homePage.email.sendKeys(ConfigurationReader.getProperty("email"));
 		homePage.password.sendKeys(ConfigurationReader.getProperty("password"));
+		BrowserUtils.waitForVisibility(homePage.loginClick, 5);
 		homePage.loginClick.click();
-		BrowserUtils.waitFor(5);
-//		dashboardPage.dashboard.click();
+
+		dashboardPage.dashboard.click();
 		
 		assertTrue( dashboardPage.budgeted.isDisplayed());
 		assertTrue( dashboardPage.actualExpense.isDisplayed());
+		BrowserUtils.waitForVisibility(dashboardPage.upcomingExpense,5);
 		assertTrue( dashboardPage.upcomingExpense.isDisplayed());
 		
 	}
