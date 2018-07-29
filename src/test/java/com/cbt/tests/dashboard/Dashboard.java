@@ -18,7 +18,7 @@ import com.cbt.utilities.Driver;
 
 public class Dashboard extends TestBase {
 	
-	
+	//Nargiza test1
 	@Test(groups= {"smoke"}, priority = 1)
 	public void budgetFunctionality() {
 		homePage();
@@ -30,7 +30,7 @@ public class Dashboard extends TestBase {
 		assertTrue( dashboardPage.upcomingExpense.isDisplayed());
 		
 	}
-	
+	//Huseyin test1
 	@Test(groups= {"smoke"}, priority = 2)
 	public void title() {
 		homePage();
