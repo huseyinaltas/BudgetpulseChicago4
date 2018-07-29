@@ -35,10 +35,9 @@ public class Dashboard extends TestBase {
 		assertTrue( dashboardPage.actualExpense.isDisplayed());
 		BrowserUtils.waitForVisibility(dashboardPage.upcomingExpense,5);
 	
-//		List<WebElement> ls = Driver.getDriver().findElements(By.xpath(dashboardPage.upcomingExpense.getText()));
-//		assertTrue( dashboardPage.upcomingExpense.isDisplayed());
+		assertTrue( dashboardPage.upcomingExpense.isDisplayed());
 		
-//		ls.stream().forEach(System.out::println);
+
 		
 		
 		
