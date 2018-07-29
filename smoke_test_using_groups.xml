@@ -9,8 +9,8 @@
 		</groups>
 
 		<classes>
-			<class name="com.cbt.tests.order.OrderTests"></class>
-			<class name="com.cbt.tests.login.LoginTests"></class>
+			<class name="com.cbt.tests.dashboard.Dashboard"></class>
+			<class name="com.cbt.tests.transaction.Transaction"></class>
 
 		</classes>
 	</test>
