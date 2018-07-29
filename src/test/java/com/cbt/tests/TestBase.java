@@ -52,9 +52,8 @@ public abstract class TestBase {
 		actions = new Actions(driver);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.manage().window().fullscreen();
-
 		driver.get(ConfigurationReader.getProperty("url"));
-
+		
 	}
 
 	@AfterMethod(alwaysRun = true)

@@ -29,5 +29,10 @@ public class DashboardPage {
 
 	@FindBy(xpath = "(//div[@class='capsule capsule-neutral']/span)[2]")
 	public WebElement upcomingExpense;
+	
+	@FindBy(id= "logo")
+	public WebElement logo;
 
+
+	
 }
