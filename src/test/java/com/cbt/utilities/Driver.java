@@ -1,11 +1,15 @@
 package com.cbt.utilities;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.internal.Configuration;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class Driver {
 	
@@ -30,6 +34,8 @@ public class Driver {
 				break;
 			}
 		}
+		String time = ConfigurationReader.getProperty("implicitWait");
+		driver.manage().timeouts().implicitlyWait(Integer.valueOf(time), TimeUnit.SECONDS);
 		return driver;
 	}
 

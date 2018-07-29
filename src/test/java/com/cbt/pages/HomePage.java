@@ -11,7 +11,7 @@ public class HomePage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
-	@FindBy(id = "//a[.='Login']")
+	@FindBy(css = "div#logbutton")
 	public WebElement loginBtn;
 
 	@FindBy(id = "login_username")
@@ -20,7 +20,7 @@ public class HomePage {
 	@FindBy(id = "login_password")
 	public WebElement password;
 
-	@FindBy(xpath = "//a[.='Login']")
+	@FindBy(css = "a#login-link")
 	public WebElement loginClick;
 
 }
