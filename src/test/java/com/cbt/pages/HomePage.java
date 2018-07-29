@@ -11,5 +11,13 @@ public class HomePage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
+	@FindBy(id="UserEmail")
+	public WebElement email;
+	
+	@FindBy(id="UserPassword")
+	public WebElement password;
+	
+	@FindBy()
+	public WebElement submitBtn;
 	
 }
