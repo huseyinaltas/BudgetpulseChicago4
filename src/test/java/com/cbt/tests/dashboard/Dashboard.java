@@ -2,7 +2,11 @@ package com.cbt.tests.dashboard;
 
 import static org.testng.Assert.assertTrue;
 
+
 import org.testng.Assert;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.cbt.pages.DashboardPage;
@@ -49,6 +53,11 @@ public class Dashboard extends TestBase {
 		homePage.password.sendKeys(ConfigurationReader.getProperty("password"));
 		BrowserUtils.waitForVisibility(homePage.loginClick, 5);
 		homePage.loginClick.click();
+
+		
+		
+		
+		
 		
 	}
 
