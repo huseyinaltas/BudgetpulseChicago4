@@ -9,9 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cbt.utilities.Driver;
 
-public class Dashboard {
+public class DashboardPage {
 	
-	public Dashboard() {
+	public DashboardPage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 	

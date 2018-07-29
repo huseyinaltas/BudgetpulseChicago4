@@ -9,9 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.cbt.utilities.Driver;
 
-public class ManageMyAccount {
+public class TransactionsPage {
 	
-	public ManageMyAccount() {
+	public TransactionsPage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 	
