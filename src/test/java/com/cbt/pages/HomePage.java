@@ -11,13 +11,16 @@ public class HomePage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
-	@FindBy(id="UserEmail")
+	@FindBy(id = "//a[.='Login']")
+	public WebElement loginBtn;
+
+	@FindBy(id = "login_username")
 	public WebElement email;
-	
-	@FindBy(id="UserPassword")
+
+	@FindBy(id = "login_password")
 	public WebElement password;
-	
-	@FindBy()
-	public WebElement submitBtn;
-	
+
+	@FindBy(xpath = "//a[.='Login']")
+	public WebElement loginClick;
+
 }
