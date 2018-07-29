@@ -46,7 +46,7 @@ public abstract class TestBase {
 		htmlReporter.config().setReportName("Web Orders Automated Test Reports");
 	}
 
-//	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod(alwaysRun = true)
 	public void setUp() {
 		driver = Driver.getDriver();
 		actions = new Actions(driver);
@@ -57,7 +57,7 @@ public abstract class TestBase {
 
 	}
 
-//	@AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result) throws IOException {
 		// checking if the test method failed
 		if (result.getStatus() == ITestResult.FAILURE) {

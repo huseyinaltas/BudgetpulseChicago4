@@ -27,7 +27,7 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@class='capsule capsule-neutral'][1]")
 	public WebElement actualExpense;
 
-	@FindBy(id = "(//div[@class='capsule capsule-neutral']/span)[2]")
+	@FindBy(xpath = "(//div[@class='capsule capsule-neutral']/span)[2]")
 	public WebElement upcomingExpense;
 
 }

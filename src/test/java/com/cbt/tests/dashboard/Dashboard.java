@@ -15,7 +15,7 @@ public class Dashboard extends TestBase {
 	HomePage homePage = new HomePage();
 	DashboardPage dashboardPage =  new DashboardPage();
 	
-	@Test
+	@Test(groups= {"smoke"}, priority = 1)
 	public void budgetFunctionality() {
 		Driver.getDriver().get(ConfigurationReader.getProperty("url"));
 		homePage.loginBtn.click();
@@ -29,7 +29,8 @@ public class Dashboard extends TestBase {
 		
 		assertTrue( dashboardPage.budgeted.isDisplayed());
 		assertTrue( dashboardPage.actualExpense.isDisplayed());
-		BrowserUtils.waitForVisibility(dashboardPage.upcomingExpense,5);
+		System.out.println(dashboardPage.budgeted.getText());
+		BrowserUtils.waitForVisibility(dashboardPage.upcomingExpense,10);
 		assertTrue( dashboardPage.upcomingExpense.isDisplayed());
 		
 	}
