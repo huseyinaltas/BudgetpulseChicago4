@@ -11,5 +11,16 @@ public class HomePage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
-	
+	@FindBy(css = "div#logbutton")
+	public WebElement loginBtn;
+
+	@FindBy(id = "login_username")
+	public WebElement email;
+
+	@FindBy(id = "login_password")
+	public WebElement password;
+
+	@FindBy(css = "a#login-link")
+	public WebElement loginClick;
+
 }
