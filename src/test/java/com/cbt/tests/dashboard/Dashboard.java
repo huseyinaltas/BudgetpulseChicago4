@@ -39,6 +39,7 @@ public class Dashboard extends TestBase {
 		
 		}
 
+
 		public void homePage() {
 			HomePage homePage = new HomePage();	
 			Driver.getDriver().get(ConfigurationReader.getProperty("url"));
@@ -48,6 +49,7 @@ public class Dashboard extends TestBase {
 			homePage.password.sendKeys(ConfigurationReader.getProperty("password"));
 			BrowserUtils.waitForVisibility(homePage.loginClick, 5);
 			homePage.loginClick.click();
+
 
 			}
 		
