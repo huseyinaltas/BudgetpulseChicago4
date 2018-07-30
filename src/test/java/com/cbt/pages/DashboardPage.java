@@ -15,6 +15,7 @@ public class DashboardPage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
+
 	@FindBy(xpath = "//li[@class='first']/a")
 	public WebElement dashboard;
 
@@ -27,12 +28,12 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@class='capsule capsule-neutral'][1]")
 	public WebElement actualExpense;
 
-
 	@FindBy(xpath = "(//div[@class='capsule capsule-neutral']/span)[2]")
 	public WebElement upcomingExpense;
-	
-	@FindBy(id= "logo")
+
+	@FindBy(id = "logo")
 	public WebElement logo;
+<<<<<<< HEAD
 	
 	
 	 //Add Account button 
@@ -64,3 +65,23 @@ public class DashboardPage {
 	@FindBy(xpath="//strong[@class='in net_worth']")
 	public WebElement openBalanceNet;
 }
+=======
+
+	@FindBy(xpath = "//*[contains(text(),'Cash Flow')]")
+	public WebElement cashFlow;
+
+	@FindBy(xpath = "//option[@value='today']")
+	public WebElement defaultValue;
+
+	@FindBy(xpath = "//div[@id='panel_all']//div[@class='capsule capsule-neutral capsule-first']/span")
+	public WebElement totalIncome;
+
+	@FindBy(xpath = "(//div[@class='capsule capsule-neutral'])[3]")
+	public WebElement totalExpense;
+
+	@FindBy(xpath = "(//div[@class='capsule capsule-neutral'])[4]")
+	public WebElement accountBalance;
+
+}
+
+>>>>>>> f630e3f0f110a9741a3ac7c93ed5e905968c601f
