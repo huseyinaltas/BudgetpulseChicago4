@@ -3,12 +3,14 @@ package com.cbt.tests.manageMyAccount;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.cbt.pages.DashboardPage;
 import com.cbt.pages.HomePage;
 import com.cbt.pages.ManageMyAccountPage;
 import com.cbt.tests.TestBase;
+import com.cbt.tests.dashboard.Dashboard;
 import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.ConfigurationReader;
 import com.cbt.utilities.Driver;
@@ -19,10 +21,11 @@ public class ManageMyAccount extends TestBase {
 	
 	DashboardPage dashboardPage =  new DashboardPage();
 	ManageMyAccountPage maccp=new ManageMyAccountPage();
+	Dashboard dsh = new Dashboard();
 	
-	@Test(groups= {"smoke"},priority=1)
+	@Test(groups= {"smoke"})
 	public void dashboardLink() throws InterruptedException{
-         homePage();
+         dsh.homePage();
 		// this is for click dashboard in homepage
 		dashboardPage.dashboard.click();
 		//this for clicking the manage my accounts link
@@ -54,15 +57,15 @@ public class ManageMyAccount extends TestBase {
 		
 	}
 	
-	public void homePage() {
-		HomePage homePage = new HomePage();	
-		Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-		homePage.loginBtn.click();
-		BrowserUtils.waitForVisibility(homePage.email, 5);
-		homePage.email.sendKeys(ConfigurationReader.getProperty("email"));
-		homePage.password.sendKeys(ConfigurationReader.getProperty("password"));
-		BrowserUtils.waitForVisibility(homePage.loginClick, 5);
-		homePage.loginClick.click();
-	}
-	
+//	public void homePage() {
+//		HomePage homePage = new HomePage();	
+//		Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+//		homePage.loginBtn.click();
+//		BrowserUtils.waitForVisibility(homePage.email, 5);
+//		homePage.email.sendKeys(ConfigurationReader.getProperty("email"));
+//		homePage.password.sendKeys(ConfigurationReader.getProperty("password"));
+//		BrowserUtils.waitForVisibility(homePage.loginClick, 5);
+//		homePage.loginClick.click();
+//	}
+//	
 }

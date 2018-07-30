@@ -33,7 +33,7 @@ public class DashboardPage {
 
 	@FindBy(id = "logo")
 	public WebElement logo;
-<<<<<<< HEAD
+
 	
 	
 	 //Add Account button 
@@ -64,8 +64,8 @@ public class DashboardPage {
 	//Net Worth Amount
 	@FindBy(xpath="//strong[@class='in net_worth']")
 	public WebElement openBalanceNet;
-}
-=======
+
+
 
 	@FindBy(xpath = "//*[contains(text(),'Cash Flow')]")
 	public WebElement cashFlow;
@@ -84,4 +84,4 @@ public class DashboardPage {
 
 }
 
->>>>>>> f630e3f0f110a9741a3ac7c93ed5e905968c601f
+
