@@ -33,6 +33,39 @@ public class DashboardPage {
 
 	@FindBy(id = "logo")
 	public WebElement logo;
+<<<<<<< HEAD
+	
+	
+	 //Add Account button 
+	@FindBy(id="btn_add_account")
+	public WebElement addAccountBtn;
+	
+	
+	 //Account Type text  
+	@FindBy(xpath="//label[@for='AccountAccountTypeId']")
+	public WebElement accountTypeText;
+	
+	//Account Type Select 
+	@FindBy(id="AccountAccountTypeId")
+	public WebElement selectAccType;
+	
+	//New Account name
+	@FindBy(id="AccountName")
+	public WebElement accountName;
+	
+	//Account opening balance
+	@FindBy(id="AccountStartingBalance")
+	public WebElement  openBalance;
+	
+	//Add Account submit button
+	@FindBy(xpath="(//button[@class='submit'])[1]")
+	public WebElement newAccSubmitBtn;
+	
+	//Net Worth Amount
+	@FindBy(xpath="//strong[@class='in net_worth']")
+	public WebElement openBalanceNet;
+}
+=======
 
 	@FindBy(xpath = "//*[contains(text(),'Cash Flow')]")
 	public WebElement cashFlow;
@@ -51,3 +84,4 @@ public class DashboardPage {
 
 }
 
+>>>>>>> f630e3f0f110a9741a3ac7c93ed5e905968c601f
