@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeTest;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.ExtentTestInterruptedException;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.ConfigurationReader;
@@ -26,7 +27,7 @@ public abstract class TestBase {
 	protected ExtentHtmlReporter htmlReporter;
 	protected ExtentTest extentLogger;
 
-	@BeforeTest
+	@BeforeTest(alwaysRun = true)
 	public void setUpTest() {
 		// actual reporter
 		report = new ExtentReports();
@@ -78,7 +79,7 @@ public abstract class TestBase {
 		Driver.closeDriver();
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun = true)
 	public void tearDownTest() {
 		report.flush();
 	}

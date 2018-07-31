@@ -21,11 +21,9 @@ public class ManageMyAccount extends TestBase {
 	
 	DashboardPage dashboardPage =  new DashboardPage();
 	ManageMyAccountPage maccp=new ManageMyAccountPage();
-	Dashboard dsh = new Dashboard();
-	
 	@Test(groups= {"smoke"})
 	public void dashboardLink() throws InterruptedException{
-         dsh.homePage();
+		HomePage.homePage();
 		// this is for click dashboard in homepage
 		dashboardPage.dashboard.click();
 		//this for clicking the manage my accounts link
@@ -52,7 +50,7 @@ public class ManageMyAccount extends TestBase {
 		
 		//this is for clicking the submit button in account page
 		maccp.submitButton.click();
-		
+
 		
 		
 	}
