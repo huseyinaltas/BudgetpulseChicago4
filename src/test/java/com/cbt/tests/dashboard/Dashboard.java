@@ -23,7 +23,8 @@ public class Dashboard extends TestBase {
 	// Nargiza test1
 	@Test(groups = { "smoke" }, priority = 1)
 	public void budgetFunctionality() {
-		homePage();
+		extentLogger = report.createTest("Positive login test");
+		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
 		dashboardPage.dashboard.click();
 		assertTrue(dashboardPage.budgeted.isDisplayed());
@@ -36,7 +37,7 @@ public class Dashboard extends TestBase {
 	// Huseyin test1
 	@Test(groups = { "smoke" }, priority = 2)
 	public void title() {
-		homePage();
+		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
 		dashboardPage.dashboard.click();
 		BrowserUtils.waitForVisibility(dashboardPage.logo, 5);
@@ -49,7 +50,7 @@ public class Dashboard extends TestBase {
 	//Aizada's  smoke test case
 			@Test(groups= {"smoke"}, priority = 4)
 			public void cashFlow() {
-				homePage();
+				HomePage.homePage();
 				DashboardPage dashboardPage =  new DashboardPage();
 				dashboardPage.dashboard.click();
 				BrowserUtils.waitForVisibility(dashboardPage.logo,5);
@@ -62,14 +63,14 @@ public class Dashboard extends TestBase {
 				Assert.assertTrue(dashboardPage.totalIncome.isDisplayed());
 			    Assert.assertTrue(dashboardPage.totalExpense.isDisplayed());
 			    Assert.assertTrue(dashboardPage.accountBalance.isDisplayed());
-			
+
 
 		}
 
 	// this is smoke test for Add Account functionality (Adilet)
 	@Test(groups = { "smoke" }, priority = 3)
 	public void addAccount() {
-		homePage();
+		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
 		dashboardPage.dashboard.click();
 		BrowserUtils.waitForVisibility(dashboardPage.logo, 5);
@@ -83,13 +84,13 @@ public class Dashboard extends TestBase {
 	}
 
 	// this test checks for Add Account functionality (Adilet)
+	
 	@Test(groups = { "tests" })
 	public void addAccountTest() {
-		homePage();
+		HomePage.homePage();
 		DashboardPage pom = new DashboardPage();
 		Random rd = new Random();
 		int accNameGenerator = rd.nextInt(1000);
-		homePage();
 		pom.dashboard.click();
 		pom.addAccountBtn.click();
 		BrowserUtils.waitForVisibility(pom.selectAccType, 10);
@@ -114,17 +115,7 @@ public class Dashboard extends TestBase {
 	}
 
 	
-		public void homePage() {
-			HomePage homePage = new HomePage();
-			BrowserUtils.waitForVisibility(homePage.loginBtn, 5);
-			homePage.loginBtn.click();
-			BrowserUtils.waitForVisibility(homePage.email, 5);
-			homePage.email.sendKeys(ConfigurationReader.getProperty("email"));
-			homePage.password.sendKeys(ConfigurationReader.getProperty("password"));
-			BrowserUtils.waitForVisibility(homePage.loginClick, 5);
-			homePage.loginClick.click();
-
-		}
+	
 
 	
 }
