@@ -15,7 +15,6 @@ public class DashboardPage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
-
 	@FindBy(xpath = "//li[@class='first']/a")
 	public WebElement dashboard;
 
