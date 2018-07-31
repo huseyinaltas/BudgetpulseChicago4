@@ -18,9 +18,9 @@ import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.ConfigurationReader;
 
 public class Dashboard extends TestBase {
-//Budget Pulse
 
-	// Nargiza test1 
+
+	// Nargiza test1
 	@Test(groups = { "smoke" }, priority = 1)
 	public void budgetFunctionality() {
 		homePage();
