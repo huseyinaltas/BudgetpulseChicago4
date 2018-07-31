@@ -11,7 +11,7 @@
 		<classes>
 			<class name="com.cbt.tests.dashboard.Dashboard"></class>
 			<class name="com.cbt.tests.transaction.Transaction"></class>
-
+            
 		</classes>
 	</test>
 
