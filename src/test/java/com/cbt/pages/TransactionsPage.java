@@ -15,6 +15,11 @@ public class TransactionsPage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 	
+	@FindBy(xpath="(//div[@id='nav']/ul//li)[2]")
+	public WebElement Trasactions;
+	
+	@FindBy(xpath="(//div[@class='box-header']//h2)[1]")
+	public WebElement recentTransactions;
 	
 	
 }

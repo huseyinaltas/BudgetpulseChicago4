@@ -5,6 +5,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.util.Random;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 
 import org.testng.Assert;
@@ -13,14 +14,17 @@ import org.testng.annotations.Test;
 
 import com.cbt.pages.DashboardPage;
 import com.cbt.pages.HomePage;
+import com.cbt.pages.TransactionsPage;
 import com.cbt.tests.TestBase;
 import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.ConfigurationReader;
+import com.cbt.utilities.Driver;
 
 public class Dashboard extends TestBase {
 
-
+  
 	// Nargiza test1
+	@Ignore
 	@Test(groups = { "smoke" }, priority = 1)
 	public void budgetFunctionality() {
 		extentLogger = report.createTest("Positive login test");
@@ -35,6 +39,7 @@ public class Dashboard extends TestBase {
 	}
 
 	// Huseyin test1
+	@Ignore
 	@Test(groups = { "smoke" }, priority = 2)
 	public void title() {
 		HomePage.homePage();
@@ -48,6 +53,7 @@ public class Dashboard extends TestBase {
 	}
 	
 	//Aizada's  smoke test case
+	@Ignore
 			@Test(groups= {"smoke"}, priority = 4)
 			public void cashFlow() {
 				HomePage.homePage();
@@ -66,7 +72,7 @@ public class Dashboard extends TestBase {
 
 
 		}
-
+@Ignore
 	// this is smoke test for Add Account functionality (Adilet)
 	@Test(groups = { "smoke" }, priority = 3)
 	public void addAccount() {
@@ -84,7 +90,7 @@ public class Dashboard extends TestBase {
 	}
 
 	// this test checks for Add Account functionality (Adilet)
-	
+	@Ignore
 	@Test(groups = { "tests" })
 	public void addAccountTest() {
 		HomePage.homePage();
@@ -114,6 +120,37 @@ public class Dashboard extends TestBase {
 
 	}
 
+	//Akmal's test SPA 611
+	
+	
+		TransactionsPage tp=new TransactionsPage();
+		DashboardPage dashboardPage = new DashboardPage();
+		
+			
+		@Test	
+			public void checkTrasactionDate() throws Exception {
+				HomePage.homePage();
+				dashboardPage.dashboard.click();
+				JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+				jse.executeScript("window.scrollBy(0,350)", "");
+				//Thread.sleep(5000);
+			//	tp.recentTransactions.click();
+				
+//				Select dropDown=new Select(dashboardPage.transMonth);
+//				dropDown.selectByVisibleText("Custom");
+				Thread.sleep(5000);
+				dashboardPage.dateFrom.click();;
+				//dashboardPage.dateFrom.sendKeys("07/16/2018");
+				//Thread.sleep(5000);
+				//dashboardPage.dateTo.clear();
+				//dashboardPage.dateTo.sendKeys("07/25/2018");
+				
+				dashboardPage.submitButton1771.click();
+				
+				
+				
+			}
+			
 	
 	
 

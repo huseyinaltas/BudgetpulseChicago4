@@ -80,6 +80,24 @@ public class DashboardPage {
 
 	@FindBy(xpath = "(//div[@class='capsule capsule-neutral'])[4]")
 	public WebElement accountBalance;
+	
+	//akmal's part Spa-611
+	
+	
+	@FindBy(xpath="(//div[@class='box-header']//h2)[1]")
+	public WebElement recentTransactions;
+	
+	@FindBy(id="select_transaction_details_month")
+	public WebElement transMonth;
+	
+	@FindBy(xpath="(//input[@id='TransFromDate'])[1]")
+	public WebElement dateFrom;
+	
+	@FindBy(xpath="(//input[@id='RecurTransToDate'])[1]")
+	public WebElement dateTo;
+	
+	@FindBy(xpath="//button[@class='submit-button']")
+	public WebElement submitButton1771;
 
 }
 
