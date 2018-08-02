@@ -5,6 +5,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.util.Random;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 
 import org.testng.Assert;
@@ -16,6 +17,7 @@ import com.cbt.pages.HomePage;
 import com.cbt.tests.TestBase;
 import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.ConfigurationReader;
+import com.cbt.utilities.Driver;
 
 public class Dashboard extends TestBase {
 
@@ -68,6 +70,7 @@ public class Dashboard extends TestBase {
 		}
 
 	// this is smoke test for Add Account functionality (Adilet)
+	@Ignore
 	@Test(groups = { "smoke" }, priority = 3)
 	public void addAccount() {
 		HomePage.homePage();
@@ -83,8 +86,10 @@ public class Dashboard extends TestBase {
 
 	}
 
-	// this test checks for Add Account functionality (Adilet)
 	
+	
+	// this test checks for Add Account functionality (Adilet)
+	@Ignore
 	@Test(groups = { "tests" })
 	public void addAccountTest() {
 		HomePage.homePage();
@@ -113,12 +118,50 @@ public class Dashboard extends TestBase {
 		Assert.assertEquals(sum, finalNet, "Net Worth is not correct");
 
 	}
-
 	
 	
-
 	
+	// Huseyin test2 - It is deleting Transaction 
+		@Test()
+		public void deleteTransaction() {
+			extentLogger = report.createTest("Delete Transaction");
+		//Add a transaction first
+			HomePage.homePage();
+			DashboardPage dashboardPage = new DashboardPage();
+			dashboardPage.dashboard.click();
+			BrowserUtils.waitForVisibility(dashboardPage.logo, 5);
+			dashboardPage.goToBofAChecking.click();
+			dashboardPage.addNewTransactionToBofA.click();
+			dashboardPage.transactionAmountBofA.sendKeys("1200");
+			Random rd = new Random();
+			int discNo = rd.nextInt(100);
+			String disc ="This is an Example"+discNo;
+			dashboardPage.transactionDescriptionBofA.sendKeys(disc);
+			Select select = new Select(dashboardPage.transactionSelectAccountBofA);
+			select.selectByVisibleText("BofA");
+			dashboardPage.transactionSubmitDoneToBofA.click();
+			Driver.getDriver().get("https://www.budgetpulse.com/dashboard");
+	
+			//Delete the created transaction
+			dashboardPage.goToBofAChecking.click();
+			String idLastBeforeDelete=dashboardPage.transactionLastOnetoSelecetToBofA1.getAttribute("id");
+//			System.out.println(idLastBeforeDelete);
+			JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+			jse.executeScript("window.scrollBy(0,350)", "");
+			BrowserUtils.waitFor(3);
+			dashboardPage.transactionLastOnetoSelecetToBofA.click();
+			BrowserUtils.waitFor(3);
+			dashboardPage.transactionDeleteSelectedToBofA.click();
+			BrowserUtils.waitFor(3);
+			dashboardPage.transactionOkbuttonForDeleteToBofA.click();
+			BrowserUtils.waitFor(3);
+			String idLastAfterDelete=dashboardPage.transactionLastOnetoSelecetToBofA1.getAttribute("id");
+			BrowserUtils.waitFor(3);
+//			System.out.println(idLastAfterDelete);
+			Assert.assertNotEquals(idLastBeforeDelete, idLastAfterDelete);
+		}
+	
+		
 }
-	
 
 
