@@ -81,6 +81,7 @@ public class DashboardPage {
 	@FindBy(xpath = "(//div[@class='capsule capsule-neutral'])[4]")
 	public WebElement accountBalance;
 	
+
 	//akmal's part Spa-611
 	
 	
@@ -98,6 +99,40 @@ public class DashboardPage {
 	
 	@FindBy(xpath="//button[@class='submit-button']")
 	public WebElement submitButton1771;
+
+
+	@FindBy(xpath = "//dt[@class='account-name']//a[@rel='253273']")
+	public WebElement goToBofAChecking;
+	
+	@FindBy(xpath = "(//td[@colspan='6']/div/a)[1]")
+	public WebElement addNewTransactionToBofA;
+	
+	@FindBy(id = "TransactionAccountId")
+	public WebElement transactionSelectAccountBofA;
+	
+	@FindBy(id = "TransactionDescription")
+	public WebElement transactionDescriptionBofA;
+	
+	
+	@FindBy(id = "TransactionAmount")
+	public WebElement transactionAmountBofA;
+	
+	@FindBy(id = "submitDone")
+	public WebElement transactionSubmitDoneToBofA;
+	
+	@FindBy(xpath = "((//form[@id='TransactionDeleteForm']/table/tbody/tr)[1]//td)[1]")
+	public WebElement transactionLastOnetoSelecetToBofA;
+	
+	@FindBy(id = "delete-transaction")
+	public WebElement transactionDeleteSelectedToBofA;
+	
+	@FindBy(xpath = "//button[@class='ui-state-default ui-corner-all']")
+	public WebElement transactionOkbuttonForDeleteToBofA;
+	
+	@FindBy(xpath = "(((//form[@id='TransactionDeleteForm']/table/tbody/tr)[1]//td)[1]/div/input)[2]")
+	public WebElement transactionLastOnetoSelecetToBofA1;
+	
+	
 
 }
 

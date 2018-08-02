@@ -14,6 +14,32 @@ public class TransactionsPage {
 	public TransactionsPage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
+	@FindBy(xpath = "//a[@href='/transactions']")
+	public WebElement transactionPage;
+	
+	@FindBy(xpath = "(//a[@class='box-header-action box-toggler button-expand'])[2]")
+	public WebElement clickCategories;
+	
+	@FindBy(id = "add_category")
+	public WebElement addCategory;
+	
+	@FindBy(xpath = "(//input[@id='TransactionCategoryName'])[2]")
+	public WebElement writeCategory;
+	
+	@FindBy(xpath = "//span[@id='add_category_form']//form//button")
+	public WebElement submitCategory;
+	
+	@FindBy(xpath = "//div[@class='notify']")
+	public WebElement textExistingCategory;
+	
+	@FindBy(xpath = "//td/a/span[@class='icon']")
+	public List<WebElement> deleteExistingLastCategory;
+	
+	@FindBy(xpath = "//button[@class='ui-state-default ui-corner-all']")
+	public WebElement okDeleteExistingLastCategory;
+	
+	
+	
 	
 	@FindBy(xpath="(//div[@id='nav']/ul//li)[2]")
 	public WebElement Trasactions;
