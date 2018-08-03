@@ -23,6 +23,7 @@ public class Dashboard extends TestBase {
 
 
 	// Nargiza test1
+	
 	@Test(groups = { "smoke" }, priority = 1)
 	public void budgetFunctionality() {
 		extentLogger = report.createTest("Positive login test");
@@ -37,6 +38,7 @@ public class Dashboard extends TestBase {
 	}
 
 	// Huseyin test1
+	
 	@Test(groups = { "smoke" }, priority = 2)
 	public void title() {
 		HomePage.homePage();
@@ -50,6 +52,7 @@ public class Dashboard extends TestBase {
 	}
 	
 	//Aizada's  smoke test case
+	      
 			@Test(groups= {"smoke"}, priority = 4)
 			public void cashFlow() {
 				HomePage.homePage();
@@ -70,7 +73,9 @@ public class Dashboard extends TestBase {
 		}
 
 	// this is smoke test for Add Account functionality (Adilet)
+
 	@Ignore
+
 	@Test(groups = { "smoke" }, priority = 3)
 	public void addAccount() {
 		HomePage.homePage();
@@ -118,9 +123,7 @@ public class Dashboard extends TestBase {
 		Assert.assertEquals(sum, finalNet, "Net Worth is not correct");
 
 	}
-	
-	
-	
+
 	// Huseyin test2 - It is deleting Transaction 
 		@Test()
 		public void deleteTransaction() {
@@ -160,6 +163,7 @@ public class Dashboard extends TestBase {
 //			System.out.println(idLastAfterDelete);
 			Assert.assertNotEquals(idLastBeforeDelete, idLastAfterDelete);
 		}
+
 	
 		
 }
