@@ -1,12 +1,10 @@
 package com.cbt.tests.transaction;
 
-import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-import com.cbt.pages.DashboardPage;
 import com.cbt.pages.HomePage;
 import com.cbt.pages.TransactionsPage;
 import com.cbt.tests.TestBase;
@@ -15,6 +13,7 @@ import com.cbt.utilities.BrowserUtils;
 public class Transaction extends TestBase {
 
 	// Huseyin test3 - It is adding existing category
+
 	@Test()
 	public void addExistinCategory() {
 		WebElement lastone = null;
@@ -60,6 +59,27 @@ public class Transaction extends TestBase {
 		 BrowserUtils.waitFor(3);
 		 
 
-	}
+		 }
+	
+	    // SPA-835, Aizada.  ---Adding existing tag, negative test---
+	     @Test
+	     public void addingExistingNegativeTag()  {
+	    	 HomePage.homePage();
+	 	 TransactionsPage transactionPage = new TransactionsPage();
+	 	 transactionPage.transactionPage.click();
+	 	 BrowserUtils.waitFor(1);
+	 	 transactionPage.tag.click();
+	 	 transactionPage.addTag.click();
+	 	 Assert.assertTrue(transactionPage.addTag.isDisplayed());
+		 BrowserUtils.waitFor(1);
+	 	 transactionPage.tagName.sendKeys("TestDuplicateTag");
+	 	 transactionPage.submitTag.click();
+         String actualAlert =  transactionPage.errorAlert.getText();
+         String expectedAlert = "Tag already exists.";
+         Assert.assertEquals(actualAlert, expectedAlert);
+	 	 
+	     }
+	     
+	
 
 }
