@@ -94,12 +94,42 @@ public class DashboardPage {
 	@FindBy(xpath="(//input[@id='TransFromDate'])[1]")
 	public WebElement dateFrom;
 	
-	@FindBy(xpath="(//input[@id='RecurTransToDate'])[1]")
+	@FindBy(xpath="//input[@id='TransToDate']")
 	public WebElement dateTo;
 	
 	@FindBy(xpath="//button[@class='submit-button']")
 	public WebElement submitButton1771;
+	
+	@FindBy(xpath="//div[@class='ui-datepicker-prev']")
+	public WebElement prePicker;
+	
+	@FindBy(xpath="//table[@class='ui-datepicker']//tr[3]//td[2]")
+	public WebElement specificDate1;
+	
+	@FindBy(xpath="//table[@class='ui-datepicker']//tr[4]//td[4]")
+	public WebElement specificDate2;
 
+	@FindBy(xpath="(//form[@class='clear']/input)[1]")
+	public WebElement actual1;
+	@FindBy(xpath="(//form[@class='clear']/input)[2]")
+	public WebElement actual2;
+	
+	@FindBy(xpath="//span[@id='description_16671452']")
+	public WebElement hoverOver;
+	
+	@FindBy(css=".toggle-edit")
+	public WebElement editClick;
+
+	@FindBy(xpath="//span[@id='description_16671452']/form/input")
+	public WebElement write;
+
+	@FindBy(xpath="(//span[@id='description_16671452']/form/button)[1]")
+	public WebElement save;
+	
+	@FindBy(xpath="//table/tbody//tr[7]//td[3]/span")
+	public WebElement text;
+
+	//my locator finishes here
 
 	@FindBy(xpath = "//dt[@class='account-name']//a[@rel='253273']")
 	public WebElement goToBofAChecking;
