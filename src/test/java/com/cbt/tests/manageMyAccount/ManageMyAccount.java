@@ -1,6 +1,9 @@
 package com.cbt.tests.manageMyAccount;
 
 
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Ignore;
@@ -21,6 +24,7 @@ public class ManageMyAccount extends TestBase {
 	
 	DashboardPage dashboardPage =  new DashboardPage();
 	ManageMyAccountPage maccp=new ManageMyAccountPage();
+	
 	@Test(groups= {"smoke"})
 	public void dashboardLink() throws InterruptedException{
 		HomePage.homePage();
@@ -51,19 +55,42 @@ public class ManageMyAccount extends TestBase {
 		//this is for clicking the submit button in account page
 		maccp.submitButton.click();
 
-		
-		
 	}
 	
-//	public void homePage() {
-//		HomePage homePage = new HomePage();	
-//		Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-//		homePage.loginBtn.click();
-//		BrowserUtils.waitForVisibility(homePage.email, 5);
-//		homePage.email.sendKeys(ConfigurationReader.getProperty("email"));
-//		homePage.password.sendKeys(ConfigurationReader.getProperty("password"));
-//		BrowserUtils.waitForVisibility(homePage.loginClick, 5);
-//		homePage.loginClick.click();
-//	}
-//	
+	//SPA 422 - Mammadova
+	@Test
+	public void negativeTransferFund() throws InterruptedException{
+		HomePage.homePage();
+		// this is for click dashboard in homepage
+		dashboardPage.dashboard.click();
+		//this for clicking the manage my accounts link
+		maccp.manageAccLink.click();
+		JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+		jse.executeScript("window.scrollBy(0,350)", "");
+		BrowserUtils.waitForVisibility(maccp.transactionFund, 5);
+		//this is clicking for Transaction fund
+		Thread.sleep(5000);
+		maccp.transactionFund.click();
+		Thread.sleep(10000);
+		BrowserUtils.waitForVisibility(maccp.amountFrom, 5);
+		//this for selecting bank name from dropDown
+		Select dropDown=new Select(maccp.amountFrom);
+		dropDown.selectByVisibleText("Chase");
+		//to bank
+		Select dropDown1=new Select(maccp.amountTo);
+		dropDown1.selectByVisibleText("Chase");
+		// first I have to clear placeholders 
+		maccp.description.clear();
+		maccp.description.sendKeys("July transfer");
+		//this for amount input
+		maccp.amount.sendKeys("100");
+		
+		//this is for clicking the submit button in account page
+		maccp.submitButton.click();
+	
+		BrowserUtils.waitFor(2);
+		assertEquals(driver.findElement(By.xpath("//div[@id='transfer_funds_errors']")).getText(),"Please select a different account for transfer.");
+		
+	
+	}
 }

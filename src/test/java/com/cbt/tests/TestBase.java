@@ -57,7 +57,7 @@ public abstract class TestBase {
 		
 	}
 
-	@AfterMethod(alwaysRun = true)
+	//@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result) throws IOException {
 		// checking if the test method failed
 		if (result.getStatus() == ITestResult.FAILURE) {
@@ -79,7 +79,7 @@ public abstract class TestBase {
 //		Driver.closeDriver();
 	}
 
-	@AfterTest(alwaysRun = true)
+	//@AfterTest(alwaysRun = true)
 	public void tearDownTest() {
 		report.flush();
 	}
