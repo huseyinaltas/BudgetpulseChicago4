@@ -1,5 +1,6 @@
 package com.cbt.tests.dashboard;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 
@@ -24,11 +25,16 @@ import com.cbt.utilities.Driver;
 
 public class Dashboard extends TestBase {
 
+
   
-	// Nargiza test1
-	@Ignore
+	
+
+
+
+	// //Nargiza, checking budget functionality, expense
+	
 	@Test(groups = { "smoke" }, priority = 1)
-	public void budgetFunctionality() {
+	public void budgetFunctionalityExpence() {
 		extentLogger = report.createTest("Positive login test");
 		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
@@ -37,11 +43,38 @@ public class Dashboard extends TestBase {
 		assertTrue(dashboardPage.actualExpense.isDisplayed());
 		BrowserUtils.waitForVisibility(dashboardPage.upcomingExpense, 5);
 		assertTrue(dashboardPage.upcomingExpense.isDisplayed());
-
+	}
+	//Nargiza, checking budget functionality, income
+	@Test(groups= {"tests"})
+	public void budgetFunctionalityIncome() {
+		HomePage.homePage();
+		DashboardPage dashboardPage = new DashboardPage();
+		dashboardPage.dashboard.click();
+		dashboardPage.selectSortBy("Income", dashboardPage.overview);
+		assertTrue(dashboardPage.budgeted.isDisplayed());
+		assertTrue(dashboardPage.actualIncome.isDisplayed());
+		BrowserUtils.waitForVisibility(dashboardPage.upcomingIncome, 5);
+		assertTrue(dashboardPage.upcomingIncome.isDisplayed());
+	}
+//	Nargiza, adding duplicate account, negative scenario
+	@Test(groups= {"tests"})
+	public void addDuplicateAccountNegativ() {
+		HomePage.homePage();
+		DashboardPage dashboardPage = new DashboardPage();
+		dashboardPage.dashboard.click();
+		dashboardPage.addAccountBtn.click();
+		dashboardPage.selectSortBy("Checking Accounts",dashboardPage.selectAccType);
+		dashboardPage.accountName.sendKeys(ConfigurationReader.getProperty("name"));
+		dashboardPage.openBalance.sendKeys(ConfigurationReader.getProperty("openingBalance"));
+		dashboardPage.newAccSubmitBtn.submit();
+	String expectedMsg = ConfigurationReader.getProperty("nameExist");
+	String actualMsg = dashboardPage.nameAlreadyExist.getText();
+	assertEquals(actualMsg, expectedMsg);
+	
 	}
 
 	// Huseyin test1
-	@Ignore
+
 	@Test(groups = { "smoke" }, priority = 2)
 	public void title() {
 		HomePage.homePage();
@@ -55,7 +88,9 @@ public class Dashboard extends TestBase {
 	}
 	
 	//Aizada's  smoke test case
-	@Ignore
+
+	      
+
 			@Test(groups= {"smoke"}, priority = 4)
 			public void cashFlow() {
 				HomePage.homePage();
@@ -76,7 +111,11 @@ public class Dashboard extends TestBase {
 		}
 
 	// this is smoke test for Add Account functionality (Adilet)
-	
+
+
+	@Ignore
+
+
 	@Test(groups = { "smoke" }, priority = 3)
 	public void addAccount() {
 		HomePage.homePage();
@@ -127,6 +166,7 @@ public class Dashboard extends TestBase {
 		Assert.assertEquals(sum, finalNet, "Net Worth is not correct");
 
 	}
+
 
 
 	//Akmal's test SPA 611
@@ -194,6 +234,7 @@ public class Dashboard extends TestBase {
 	
 	
 	
+
 	// Huseyin test2 - It is deleting Transaction 
 		
 		@Test()
@@ -234,6 +275,7 @@ public class Dashboard extends TestBase {
 //			System.out.println(idLastAfterDelete);
 			Assert.assertNotEquals(idLastBeforeDelete, idLastAfterDelete);
 		}
+
 	
 		//Akmal's test case SPA-610
 		

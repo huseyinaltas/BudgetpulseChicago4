@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.cbt.utilities.Driver;
 
@@ -20,7 +21,21 @@ public class DashboardPage {
 
 	@FindBy(id = "select_budget_type")
 	public WebElement overview;
+	
+	public void selectSortBy(String option, WebElement select) {
+		Select sortBy = new Select(select);
+		sortBy.selectByVisibleText(option);
+	}
+	
+	@FindBy(xpath = "//div[@class='capsule capsule-neutral'][1]")
+	public WebElement actualIncome;
+	
+	@FindBy(xpath = "(//div[@class='capsule capsule-neutral']/span)[2]")
+	public WebElement upcomingIncome;
 
+	@FindBy(css="div.notify")
+	public WebElement nameAlreadyExist;
+	
 	@FindBy(xpath = "//div[@class='capsule capsule-neutral capsule-first']")
 	public WebElement budgeted;
 
