@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.cbt.utilities.Driver;
 
@@ -20,7 +21,21 @@ public class DashboardPage {
 
 	@FindBy(id = "select_budget_type")
 	public WebElement overview;
+	
+	public void selectSortBy(String option, WebElement select) {
+		Select sortBy = new Select(select);
+		sortBy.selectByVisibleText(option);
+	}
+	
+	@FindBy(xpath = "//div[@class='capsule capsule-neutral'][1]")
+	public WebElement actualIncome;
+	
+	@FindBy(xpath = "(//div[@class='capsule capsule-neutral']/span)[2]")
+	public WebElement upcomingIncome;
 
+	@FindBy(css="div.notify")
+	public WebElement nameAlreadyExist;
+	
 	@FindBy(xpath = "//div[@class='capsule capsule-neutral capsule-first']")
 	public WebElement budgeted;
 
@@ -79,6 +94,56 @@ public class DashboardPage {
 	@FindBy(xpath = "(//div[@class='capsule capsule-neutral'])[4]")
 	public WebElement accountBalance;
 	
+
+	//akmal's part Spa-611
+	
+	
+	@FindBy(xpath="(//div[@class='box-header']//h2)[1]")
+	public WebElement recentTransactions;
+	
+	@FindBy(id="select_transaction_details_month")
+	public WebElement transMonth;
+	
+	@FindBy(xpath="(//input[@id='TransFromDate'])[1]")
+	public WebElement dateFrom;
+	
+	@FindBy(xpath="//input[@id='TransToDate']")
+	public WebElement dateTo;
+	
+	@FindBy(xpath="//button[@class='submit-button']")
+	public WebElement submitButton1771;
+	
+	@FindBy(xpath="//div[@class='ui-datepicker-prev']")
+	public WebElement prePicker;
+	
+	@FindBy(xpath="//table[@class='ui-datepicker']//tr[3]//td[2]")
+	public WebElement specificDate1;
+	
+	@FindBy(xpath="//table[@class='ui-datepicker']//tr[4]//td[4]")
+	public WebElement specificDate2;
+
+	@FindBy(xpath="(//form[@class='clear']/input)[1]")
+	public WebElement actual1;
+	@FindBy(xpath="(//form[@class='clear']/input)[2]")
+	public WebElement actual2;
+	
+	@FindBy(xpath="//span[@id='description_16671452']")
+	public WebElement hoverOver;
+	
+	@FindBy(css=".toggle-edit")
+	public WebElement editClick;
+
+	@FindBy(xpath="//span[@id='description_16671452']/form/input")
+	public WebElement write;
+
+	@FindBy(xpath="(//span[@id='description_16671452']/form/button)[1]")
+	public WebElement save;
+	
+	@FindBy(xpath="//table/tbody//tr[7]//td[3]/span")
+	public WebElement text;
+
+	//my locator finishes here
+
 	@FindBy(xpath = "//dt[@class='account-name']//a[@rel='253273']")
 	public WebElement goToBofAChecking;
 	
@@ -113,11 +178,11 @@ public class DashboardPage {
 	@FindBy(xpath = "(//a[@class='toggle-arrow recent'])[1]")
 	public WebElement transactionToddleArrowBtn;
 	
+
 	@FindBy(xpath = "(//tr[@class='options-row expanded']//li)[3]")
 	public WebElement transactionAddNote;
 	@FindBy(xpath ="(//a[@class='delete'])[1]")
 	public WebElement deleteTransactionOnDashboard;
 	
 }
-
 

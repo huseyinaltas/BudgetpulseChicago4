@@ -1,10 +1,13 @@
 package com.cbt.tests.dashboard;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.util.Random;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
@@ -21,10 +24,15 @@ import com.cbt.utilities.Driver;
 public class Dashboard extends TestBase {
 
 
-	// Nargiza test1
+  
+	
+
+
+
+	// //Nargiza, checking budget functionality, expense
 	
 	@Test(groups = { "smoke" }, priority = 1)
-	public void budgetFunctionality() {
+	public void budgetFunctionalityExpence() {
 		extentLogger = report.createTest("Positive login test");
 		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
@@ -33,11 +41,38 @@ public class Dashboard extends TestBase {
 		assertTrue(dashboardPage.actualExpense.isDisplayed());
 		BrowserUtils.waitForVisibility(dashboardPage.upcomingExpense, 5);
 		assertTrue(dashboardPage.upcomingExpense.isDisplayed());
-
+	}
+	//Nargiza, checking budget functionality, income
+	@Test(groups= {"tests"})
+	public void budgetFunctionalityIncome() {
+		HomePage.homePage();
+		DashboardPage dashboardPage = new DashboardPage();
+		dashboardPage.dashboard.click();
+		dashboardPage.selectSortBy("Income", dashboardPage.overview);
+		assertTrue(dashboardPage.budgeted.isDisplayed());
+		assertTrue(dashboardPage.actualIncome.isDisplayed());
+		BrowserUtils.waitForVisibility(dashboardPage.upcomingIncome, 5);
+		assertTrue(dashboardPage.upcomingIncome.isDisplayed());
+	}
+//	Nargiza adding duplicate account, negative scenario
+	@Test(groups= {"tests"})
+	public void addDuplicateAccountNegativ() {
+		HomePage.homePage();
+		DashboardPage dashboardPage = new DashboardPage();
+		dashboardPage.dashboard.click();
+		dashboardPage.addAccountBtn.click();
+		dashboardPage.selectSortBy("Checking Accounts",dashboardPage.selectAccType);
+		dashboardPage.accountName.sendKeys(ConfigurationReader.getProperty("name"));
+		dashboardPage.openBalance.sendKeys(ConfigurationReader.getProperty("openingBalance"));
+		dashboardPage.newAccSubmitBtn.submit();
+	String expectedMsg = ConfigurationReader.getProperty("nameExist");
+	String actualMsg = dashboardPage.nameAlreadyExist.getText();
+	assertEquals(actualMsg, expectedMsg);
+	
 	}
 
 	// Huseyin test1
-	
+
 	@Test(groups = { "smoke" }, priority = 2)
 	public void title() {
 		HomePage.homePage();
@@ -51,7 +86,7 @@ public class Dashboard extends TestBase {
 	}
 	
 	//Aizada's  smoke test case
-	     
+
 			@Test(groups= {"smoke"}, priority = 4)
 			public void cashFlow() {
 				HomePage.homePage();
@@ -73,7 +108,6 @@ public class Dashboard extends TestBase {
 
 	// this is smoke test for Add Account functionality (Adilet)
 
-	
 
 	@Test(groups = { "smoke" }, priority = 3)
 	public void addAccount() {
@@ -90,8 +124,11 @@ public class Dashboard extends TestBase {
 
 	}
 
+
+
 	
 	
+
 	// this test checks for Add Account functionality (Adilet)
 	
 	@Test(groups = { "tests" })
@@ -123,7 +160,76 @@ public class Dashboard extends TestBase {
 
 	}
 
+
+
+	//Akmal's test SPA 611
+	
+	
+		TransactionsPage tp=new TransactionsPage();
+		DashboardPage dashboardPage = new DashboardPage();
+		
+// akmal's test case 		SPA-611
+		@Test	
+			public void checkTrasactionDate() throws Exception {
+				HomePage.homePage();
+				dashboardPage.dashboard.click();
+				JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+				jse.executeScript("window.scrollBy(0,250)", "");
+				//Thread.sleep(5000);
+			//	tp.recentTransactions.click();
+				
+//				Select dropDown=new Select(dashboardPage.transMonth);
+//				dropDown.selectByVisibleText("Custom");
+				BrowserUtils.waitFor(3);
+				dashboardPage.dateFrom.click();
+				BrowserUtils.waitFor(3);
+				dashboardPage.prePicker.click();
+				BrowserUtils.waitFor(3);
+				dashboardPage.specificDate1.click();
+				
+				BrowserUtils.waitFor(3);
+				
+			    String expectedDate1="07/16/2018";
+				String actualDate1=dashboardPage.actual1.getAttribute("value");
+				System.out.println(expectedDate1);
+				System.out.println(actualDate1);
+				Assert.assertEquals(expectedDate1,actualDate1);
+				
+				//dashboardPage.dateFrom.sendKeys("07/16/2018");
+				//Thread.sleep(5000);
+				//dashboardPage.dateTo.clear();
+				//dashboardPage.dateTo.sendKeys("07/25/2018");
+				
+				BrowserUtils.waitFor(3);
+				dashboardPage.dateTo.click();
+				BrowserUtils.waitFor(3);
+				dashboardPage.prePicker.click();
+				BrowserUtils.waitFor(3);
+				dashboardPage.specificDate2.click();
+				
+				BrowserUtils.waitFor(3);
+				String expectedDate2="07/25/2018";
+				String actualDate2=dashboardPage.actual2.getAttribute("value");
+				System.out.println(expectedDate2);
+				System.out.println(actualDate2);
+				
+				Assert.assertEquals(expectedDate2,actualDate2);
+				
+				BrowserUtils.waitFor(10);
+				dashboardPage.submitButton1771.click();
+				
+				
+				
+			}
+			
+
+
+	
+	
+	
+
 	// Huseyin test2 - It is deleting Transaction 
+		
 		@Test()
 		public void deleteTransaction() {
 			extentLogger = report.createTest("Delete Transaction");
@@ -200,7 +306,6 @@ public void addNote() {
 
 //ReadNote TC#613 by Aigerim
  
-	
 	@Test
 	public void readNote(){
 		HomePage.homePage();
@@ -241,6 +346,45 @@ public void addNote() {
 		dashboardPage.deleteTransactionOnDashboard.click();
 	
 	}
+
+		//Akmal's test case SPA-610
+		
+		@Test
+		public void changeTransactionDescription() {
+			HomePage.homePage();
+			dashboardPage.dashboard.click();
+			JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+			jse.executeScript("window.scrollBy(0,250)", "");
+	
+			BrowserUtils.waitFor(5);
+			Actions action=new Actions(driver);
+			action.moveToElement(dashboardPage.hoverOver).perform();
+			
+			
+			BrowserUtils.waitFor(3);
+			//action.moveToElement(dashboardPage.editClick).perform();
+			
+			dashboardPage.editClick.click();
+			
+			BrowserUtils.waitFor(3);
+		
+			dashboardPage.write.sendKeys("June Expenses");
+			
+			BrowserUtils.waitFor(3);
+			
+			dashboardPage.save.click();
+			BrowserUtils.waitFor(3);
+			String expectedDescription="June Expenses";
+			String actualDescription=dashboardPage.text.getText();
+			BrowserUtils.waitFor(3);
+			Assert.assertEquals(actualDescription,expectedDescription);
+			System.out.println(actualDescription);
+			
+
+			
+		}
+		
+
 }
 
 
