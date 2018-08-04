@@ -64,8 +64,6 @@ public class DashboardPage {
 	@FindBy(xpath="//strong[@class='in net_worth']")
 	public WebElement openBalanceNet;
 
-
-
 	@FindBy(xpath = "//*[contains(text(),'Cash Flow')]")
 	public WebElement cashFlow;
 
@@ -112,7 +110,13 @@ public class DashboardPage {
 	@FindBy(xpath = "(((//form[@id='TransactionDeleteForm']/table/tbody/tr)[1]//td)[1]/div/input)[2]")
 	public WebElement transactionLastOnetoSelecetToBofA1;
 	
+	@FindBy(xpath = "(//a[@class='toggle-arrow recent'])[1]")
+	public WebElement transactionToddleArrowBtn;
 	
+	@FindBy(xpath = "(//tr[@class='options-row expanded']//li)[3]")
+	public WebElement transactionAddNote;
+	@FindBy(xpath ="(//a[@class='delete'])[1]")
+	public WebElement deleteTransactionOnDashboard;
 	
 }
 

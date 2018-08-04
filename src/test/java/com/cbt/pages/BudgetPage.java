@@ -18,6 +18,11 @@ public class BudgetPage {
 	@FindBy(xpath= "//*[contains(text(),'Expenses')]")
 	public WebElement expenses;
 	
+	@FindBy(xpath= "//*[contains(text(),'Income')]")
+	//@FindBy(xpath= "//select[@id='TransactionCategoryBudgetType']//option[@value='income']")
+	public WebElement income;
+	
+	
 	@FindBy(xpath = "//div[@id=\"add_budget_item_header\"]/a")
 	public WebElement greenBtn;
 	
@@ -41,5 +46,9 @@ public class BudgetPage {
 	
 	@FindBy(xpath = "//*[contains(text(),'$800.00')]")
 	public WebElement VerifyBudgeted;
+	
+	//@FindBy(xpath = "(//input[@id='Budget0Amount'])[1]")
+	@FindBy(xpath ="//div[@id='panel_budget']//div[@class='capsule capsule-neutral capsule-first']")
+	public WebElement netSalaryBudgeted;
 	
 }

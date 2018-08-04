@@ -2,18 +2,17 @@ package com.cbt.tests.dashboard;
 
 import static org.testng.Assert.assertTrue;
 
-
 import java.util.Random;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
-
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.cbt.pages.DashboardPage;
 import com.cbt.pages.HomePage;
+import com.cbt.pages.TransactionsPage;
 import com.cbt.tests.TestBase;
 import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.ConfigurationReader;
@@ -52,7 +51,7 @@ public class Dashboard extends TestBase {
 	}
 	
 	//Aizada's  smoke test case
-	      
+	     
 			@Test(groups= {"smoke"}, priority = 4)
 			public void cashFlow() {
 				HomePage.homePage();
@@ -74,7 +73,7 @@ public class Dashboard extends TestBase {
 
 	// this is smoke test for Add Account functionality (Adilet)
 
-	@Ignore
+	
 
 	@Test(groups = { "smoke" }, priority = 3)
 	public void addAccount() {
@@ -94,7 +93,7 @@ public class Dashboard extends TestBase {
 	
 	
 	// this test checks for Add Account functionality (Adilet)
-	@Ignore
+	
 	@Test(groups = { "tests" })
 	public void addAccountTest() {
 		HomePage.homePage();
@@ -163,9 +162,85 @@ public class Dashboard extends TestBase {
 //			System.out.println(idLastAfterDelete);
 			Assert.assertNotEquals(idLastBeforeDelete, idLastAfterDelete);
 		}
-
-	
 		
+//AddNote TC#612 by Aigerim
+@Test
+public void addNote() {
+	HomePage.homePage();
+	DashboardPage dashboardPage = new DashboardPage();
+	dashboardPage.dashboard.click();
+	BrowserUtils.waitForVisibility(dashboardPage.logo, 3);
+	dashboardPage.goToBofAChecking.click();
+	dashboardPage.addNewTransactionToBofA.click();
+	dashboardPage.transactionAmountBofA.sendKeys("3000");
+	Random rd = new Random();
+	int discNo = rd.nextInt(100);
+	String disc ="Aigerim's transaction"+discNo;
+	dashboardPage.transactionDescriptionBofA.sendKeys(disc);
+	Select select = new Select(dashboardPage.transactionSelectAccountBofA);
+	select.selectByVisibleText("BofA");
+	dashboardPage.transactionSubmitDoneToBofA.click();
+	BrowserUtils.waitFor(5);
+	JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+	jse.executeScript("window.scrollBy(0,350)", "");
+	BrowserUtils.waitFor(3);
+	dashboardPage.transactionToddleArrowBtn.click();
+	BrowserUtils.waitFor(3);
+	dashboardPage.transactionAddNote.click();
+	TransactionsPage transaction = new TransactionsPage();
+	BrowserUtils.waitFor(3);
+	transaction.addNote.sendKeys("Cybertek payment");
+	transaction.submitDone.click();
+	dashboardPage.transactionToddleArrowBtn.click();
+	BrowserUtils.waitFor(3);
+	dashboardPage.deleteTransactionOnDashboard.click();
+	
+	
+}
+
+//ReadNote TC#613 by Aigerim
+ 
+	
+	@Test
+	public void readNote(){
+		HomePage.homePage();
+		TransactionsPage transaction = new TransactionsPage();
+		DashboardPage dashboardPage = new DashboardPage();
+		dashboardPage.dashboard.click();
+		BrowserUtils.waitForVisibility(dashboardPage.logo, 3);
+		dashboardPage.goToBofAChecking.click();
+		dashboardPage.addNewTransactionToBofA.click();
+		dashboardPage.transactionAmountBofA.sendKeys("3000");
+		Random rd = new Random();
+		int discNo = rd.nextInt(100);
+		String disc ="Aigerim's transaction"+discNo;
+		dashboardPage.transactionDescriptionBofA.sendKeys(disc);
+		Select select = new Select(dashboardPage.transactionSelectAccountBofA);
+		select.selectByVisibleText("BofA");
+		dashboardPage.transactionSubmitDoneToBofA.click();
+		BrowserUtils.waitFor(5);
+		JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+		jse.executeScript("window.scrollBy(0,350)", "");
+		BrowserUtils.waitFor(3);
+		dashboardPage.transactionToddleArrowBtn.click();
+		BrowserUtils.waitFor(3);
+		dashboardPage.transactionAddNote.click();
+		BrowserUtils.waitFor(3);
+		transaction.addNote.sendKeys("Cybertek payment");
+		transaction.submitDone.click();
+		dashboardPage.transactionToddleArrowBtn.click();
+		BrowserUtils.waitFor(3);
+		dashboardPage.transactionAddNote.click();
+		String actualText = transaction.addNote.getText();
+		System.out.println(transaction.addNote.getText());
+		String expectedText = "Cybertek payment";
+		Assert.assertEquals(actualText, expectedText);
+		transaction.submitDone.click();
+		dashboardPage.transactionToddleArrowBtn.click();
+		BrowserUtils.waitFor(3);
+		dashboardPage.deleteTransactionOnDashboard.click();
+	
+	}
 }
 
 
