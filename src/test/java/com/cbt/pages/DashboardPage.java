@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.cbt.utilities.Driver;
 
@@ -80,6 +81,43 @@ public class DashboardPage {
 
 	@FindBy(xpath = "(//div[@class='capsule capsule-neutral'])[4]")
 	public WebElement accountBalance;
+	
+	@FindBy(xpath="(//a[.='Add New'])[1]")
+	public WebElement addNew;
+	
+	@FindBy(id="TransactionTransactionType")
+	public WebElement transactionType;
+	
+	@FindBy(name="data[TransactionCategory][name]")
+	public WebElement transactionCategoryName;
+	
+	@FindBy(name="data[Transaction][description]")
+	public WebElement transactionDescription;
+	
+	@FindBy(name="data[Transaction][amount]")
+	public WebElement transactionAmount;
+	
+	@FindBy(name="data[Transaction][account_id]")
+	public WebElement transactionAccount;
+	
+	@FindBy(id="submitDone")
+	public WebElement submitDone;
+	
+	@FindBy(xpath="//div[@class='box-body editable']//table//tbody/tr[1]")
+	public WebElement firstRowofTable;
+	
+	@FindBy(xpath="//div[@class='box-body editable']//table//tbody/tr[1]/td[3]")
+	public WebElement transactionDescriptionInTable;
+	
+	public void selectTransaction(String byText) {
+		Select select = new Select(transactionType);
+		select.selectByVisibleText(byText);
+	}
+	
+	public void selectTransactionAccount(String byText) {
+		Select select = new Select(transactionAccount);
+		select.selectByVisibleText(byText);
+	}
 
 }
 
