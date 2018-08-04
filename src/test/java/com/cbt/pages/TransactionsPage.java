@@ -47,11 +47,19 @@ public class TransactionsPage {
 	@FindBy(css = "#TagTagName")
 	public WebElement tagName;
 	
+
+	@FindBy(xpath="(//div[@id='nav']/ul//li)[2]")
+	public WebElement Trasactions;
+	
+	@FindBy(xpath="(//div[@class='box-header']//h2)[1]")
+	public WebElement recentTransactions;
+
 	@FindBy(xpath = "(//button[@type='submit'])[2]")
 	public WebElement submitTag;
 	
 	@FindBy(xpath = "//*[contains(text(),'Tag already exists.')]")
 	public WebElement errorAlert;
+
 	
 	
 }
