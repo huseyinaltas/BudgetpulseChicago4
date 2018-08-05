@@ -13,7 +13,7 @@ import com.cbt.utilities.BrowserUtils;
 public class Budget extends TestBase {
 	
 // SPA-685  Aizada --Add new budget to the item
-	@Ignore
+
 	@Test
 	public void addNewBudjetItem()  {
 		HomePage.homePage();
@@ -52,6 +52,7 @@ public class Budget extends TestBase {
 		String actualBudgeted = bPage.incomeBudgetAmount.getText();
 		String expectedBudgeted = "$5,000.00";
 		Assert.assertEquals(actualBudgeted, expectedBudgeted);
+		
 		}
 	}
 
