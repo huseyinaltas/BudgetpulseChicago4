@@ -48,8 +48,10 @@ public class BudgetPage{
 	public WebElement expenses;
 	
 	@FindBy(xpath= "//*[contains(text(),'Income')]")
-	//@FindBy(xpath= "//select[@id='TransactionCategoryBudgetType']//option[@value='income']")
 	public WebElement income;
+	
+	@FindBy(xpath = "//select[@id='TransactionCategoryBudgetType']//option[@value='income']")
+	public WebElement incomeSelect;
 	
 	
 	@FindBy(xpath = "//div[@id=\"add_budget_item_header\"]/a")
