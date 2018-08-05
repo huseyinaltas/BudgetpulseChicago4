@@ -95,6 +95,44 @@ public class DashboardPage {
 	public WebElement accountBalance;
 	
 
+	@FindBy(xpath="(//a[.='Add New'])[1]")
+	public WebElement addNew;
+	
+	@FindBy(id="TransactionTransactionType")
+	public WebElement transactionType;
+	
+	@FindBy(name="data[TransactionCategory][name]")
+	public WebElement transactionCategoryName;
+	
+	@FindBy(name="data[Transaction][description]")
+	public WebElement transactionDescription;
+	
+	@FindBy(name="data[Transaction][amount]")
+	public WebElement transactionAmount;
+	
+	@FindBy(name="data[Transaction][account_id]")
+	public WebElement transactionAccount;
+	
+	@FindBy(id="submitDone")
+	public WebElement submitDone;
+	
+	@FindBy(xpath="//div[@class='box-body editable']//table//tbody/tr[1]")
+	public WebElement firstRowofTable;
+	
+	@FindBy(xpath="//div[@class='box-body editable']//table//tbody/tr[1]/td[3]")
+	public WebElement transactionDescriptionInTable;
+	
+	public void selectTransaction(String byText) {
+		Select select = new Select(transactionType);
+		select.selectByVisibleText(byText);
+	}
+	
+	public void selectTransactionAccount(String byText) {
+		Select select = new Select(transactionAccount);
+		select.selectByVisibleText(byText);
+	}
+
+
 	//akmal's part Spa-611
 	
 	
@@ -179,10 +217,12 @@ public class DashboardPage {
 	public WebElement transactionToddleArrowBtn;
 	
 
+
 	@FindBy(xpath = "(//tr[@class='options-row expanded']//li)[3]")
 	public WebElement transactionAddNote;
 	@FindBy(xpath ="(//a[@class='delete'])[1]")
 	public WebElement deleteTransactionOnDashboard;
 	
+
 }
 
