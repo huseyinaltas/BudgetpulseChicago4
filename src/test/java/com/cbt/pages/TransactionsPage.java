@@ -47,12 +47,25 @@ public class TransactionsPage {
 	@FindBy(css = "#TagTagName")
 	public WebElement tagName;
 	
+
+	@FindBy(xpath="(//div[@id='nav']/ul//li)[2]")
+	public WebElement Trasactions;
+	
+	@FindBy(xpath="(//div[@class='box-header']//h2)[1]")
+	public WebElement recentTransactions;
+
 	@FindBy(xpath = "(//button[@type='submit'])[2]")
 	public WebElement submitTag;
 	
 	@FindBy(xpath = "//*[contains(text(),'Tag already exists.')]")
 	public WebElement errorAlert;
+
 	
+	@FindBy(xpath = "//div[@id='advanced_add_new_transaction_box']//fieldset[@class='toggle last expanded']//textarea[@name='data[Transaction][note]']")
+	public WebElement addNote;
+	
+	@FindBy(id = "submitDone")
+	public WebElement submitDone;
 	
 }
 
