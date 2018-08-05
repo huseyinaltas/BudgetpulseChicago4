@@ -61,6 +61,11 @@ public class TransactionsPage {
 	public WebElement errorAlert;
 
 	
+	@FindBy(xpath = "//div[@id='advanced_add_new_transaction_box']//fieldset[@class='toggle last expanded']//textarea[@name='data[Transaction][note]']")
+	public WebElement addNote;
+	
+	@FindBy(id = "submitDone")
+	public WebElement submitDone;
 	
 }
 
