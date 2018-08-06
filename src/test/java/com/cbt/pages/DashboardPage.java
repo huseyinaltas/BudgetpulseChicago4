@@ -222,7 +222,15 @@ public class DashboardPage {
 	public WebElement transactionAddNote;
 	@FindBy(xpath ="(//a[@class='delete'])[1]")
 	public WebElement deleteTransactionOnDashboard;
-	
+
+
+	// SPA-803 Adilet
+
+	@FindBy (xpath="//a[.='BofA']")
+	public WebElement bofa;
+
+	@FindBy (xpath="//a[.='Import/Export data']")
+	public WebElement exportData;
 
 }
 

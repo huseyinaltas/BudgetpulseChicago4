@@ -13,7 +13,7 @@ import com.cbt.utilities.BrowserUtils;
 public class Budget extends TestBase {
 	
 // SPA-685  Aizada --Add new budget to the item
-	
+
 	@Test
 	public void addNewBudjetItem()  {
 		HomePage.homePage();

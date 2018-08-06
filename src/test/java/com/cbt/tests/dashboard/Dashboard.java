@@ -5,6 +5,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.util.Random;
 
+import com.cbt.pages.ToolsPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -386,6 +387,31 @@ public void addNote() {
 
 			
 		}
+
+	// SPA-803 Export Account
+	@Test
+	public void exportAccount(){
+		HomePage.homePage();
+		DashboardPage pom = new DashboardPage();
+		ToolsPage tools = new ToolsPage();
+		pom.dashboard.click();
+		pom.bofa.click();
+		pom.exportData.click();
+		tools.exportAccounts.click();
+		BrowserUtils.waitForVisibility(tools.selectAccount, 5);
+		Select select = new Select(tools.selectAccount);
+		select.selectByVisibleText("BofA");
+		BrowserUtils.waitForVisibility(tools.selectTransactions, 5);
+		Select select2 = new Select(tools.selectTransactions);
+		select2.selectByVisibleText("All Transactions");
+
+		Assert.assertTrue(tools.exportBtn.isEnabled(), "Export button is disabled");
+
+
+	}
+
+
+
 		
 
 }

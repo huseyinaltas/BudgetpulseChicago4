@@ -48,17 +48,16 @@ public class BudgetPage{
 	public WebElement expenses;
 	
 	@FindBy(xpath= "//*[contains(text(),'Income')]")
-	//@FindBy(xpath= "//select[@id='TransactionCategoryBudgetType']//option[@value='income']")
 	public WebElement income;
 	
+
 	//@FindBy(xpath ="(//span[@class='summary'])[2]")
 		@FindBy(xpath = "//strong[contains(text(), '$5,000.00')]")
 		public WebElement incomeBudgetAmount;
 		
 		@FindBy(xpath ="(//li[@class='tab ui-state-default ui-corner-top'])[1]")
 		public WebElement incomePanel;
-	
-	
+
 	@FindBy(xpath = "//select[@id='TransactionCategoryBudgetType']//option[@value='income']")
 	public WebElement incomeSelect;
 	
@@ -70,6 +69,7 @@ public class BudgetPage{
 	
 	@FindBy(id = "TransactionCategoryMonthlyBudget")
 	public WebElement budgetAmount;
+	
 	
 	@FindBy(xpath = "//form[@id='budget_form_add_transaction_category']/ul[2]//button")
 	public WebElement submitBtn;
@@ -86,9 +86,9 @@ public class BudgetPage{
 	@FindBy(xpath = "//*[contains(text(),'$800.00')]")
 	public WebElement VerifyBudgeted;
 
-	
-	//@FindBy(xpath = "(//input[@id='Budget0Amount'])[1]")
 	@FindBy(xpath ="//div[@id='panel_budget']//div[@class='capsule capsule-neutral capsule-first']")
 	public WebElement netSalaryBudgeted;
+	
+	
 	
 }
