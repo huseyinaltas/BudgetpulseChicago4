@@ -51,8 +51,18 @@ public class BudgetPage{
 	//@FindBy(xpath= "//select[@id='TransactionCategoryBudgetType']//option[@value='income']")
 	public WebElement income;
 	
+	//@FindBy(xpath ="(//span[@class='summary'])[2]")
+		@FindBy(xpath = "//strong[contains(text(), '$5,000.00')]")
+		public WebElement incomeBudgetAmount;
+		
+		@FindBy(xpath ="(//li[@class='tab ui-state-default ui-corner-top'])[1]")
+		public WebElement incomePanel;
 	
-	@FindBy(xpath = "//div[@id=\"add_budget_item_header\"]/a")
+	
+	@FindBy(xpath = "//select[@id='TransactionCategoryBudgetType']//option[@value='income']")
+	public WebElement incomeSelect;
+	
+	@FindBy(id = "add_budget_item_header")
 	public WebElement greenBtn;
 	
 	@FindBy(id = "TransactionCategoryName")

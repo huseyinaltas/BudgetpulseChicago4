@@ -177,7 +177,7 @@ public class DashboardPage {
 	@FindBy(xpath="(//span[@id='description_16671452']/form/button)[1]")
 	public WebElement save;
 	
-	@FindBy(xpath="//table/tbody//tr[7]//td[3]/span")
+	@FindBy(xpath="//span[contains(@id,'description_16671452')]")
 	public WebElement text;
 
 	//my locator finishes here

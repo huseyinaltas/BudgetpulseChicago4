@@ -31,7 +31,7 @@ public class Dashboard extends TestBase {
 
 	// //Nargiza, checking budget functionality, expense
 	
-	@Test(groups = { "smoke" }, priority = 1)
+	@Test()
 	public void budgetFunctionalityExpence() {
 		extentLogger = report.createTest("Positive login test");
 		HomePage.homePage();
@@ -43,7 +43,7 @@ public class Dashboard extends TestBase {
 		assertTrue(dashboardPage.upcomingExpense.isDisplayed());
 	}
 	//Nargiza, checking budget functionality, income
-	@Test(groups= {"tests"})
+	@Test()
 	public void budgetFunctionalityIncome() {
 		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
@@ -55,7 +55,7 @@ public class Dashboard extends TestBase {
 		assertTrue(dashboardPage.upcomingIncome.isDisplayed());
 	}
 //	Nargiza adding duplicate account, negative scenario
-	@Test(groups= {"tests"})
+	@Test()
 	public void addDuplicateAccountNegativ() {
 		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
@@ -73,7 +73,7 @@ public class Dashboard extends TestBase {
 
 	// Huseyin test1
 
-	@Test(groups = { "smoke" }, priority = 2)
+	@Test()
 	public void title() {
 		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
@@ -109,7 +109,7 @@ public class Dashboard extends TestBase {
 	// this is smoke test for Add Account functionality (Adilet)
 
 
-	@Test(groups = { "smoke" }, priority = 3)
+	@Test()
 	public void addAccount() {
 		HomePage.homePage();
 		DashboardPage dashboardPage = new DashboardPage();
@@ -131,7 +131,7 @@ public class Dashboard extends TestBase {
 
 	// this test checks for Add Account functionality (Adilet)
 	
-	@Test(groups = { "tests" })
+	@Test()
 	public void addAccountTest() {
 		HomePage.homePage();
 		DashboardPage pom = new DashboardPage();
@@ -162,15 +162,16 @@ public class Dashboard extends TestBase {
 
 
 
-	//Akmal's test SPA 611
 	
 	
-		TransactionsPage tp=new TransactionsPage();
-		DashboardPage dashboardPage = new DashboardPage();
+	
+		
 		
 // akmal's test case 		SPA-611
 		@Test	
 			public void checkTrasactionDate() throws Exception {
+			TransactionsPage tp=new TransactionsPage();
+			DashboardPage dashboardPage = new DashboardPage();
 				HomePage.homePage();
 				dashboardPage.dashboard.click();
 				JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
@@ -351,6 +352,8 @@ public void addNote() {
 		
 		@Test
 		public void changeTransactionDescription() {
+			TransactionsPage tp=new TransactionsPage();
+			DashboardPage dashboardPage = new DashboardPage();
 			HomePage.homePage();
 			dashboardPage.dashboard.click();
 			JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();

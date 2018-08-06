@@ -22,11 +22,12 @@ import com.cbt.utilities.Driver;
 
 public class ManageMyAccount extends TestBase {
 	
-	DashboardPage dashboardPage =  new DashboardPage();
-	ManageMyAccountPage maccp=new ManageMyAccountPage();
 	
-	@Test(groups= {"smoke"})
+	//akmal
+	@Test()
 	public void dashboardLink() throws InterruptedException{
+		DashboardPage dashboardPage =  new DashboardPage();
+		ManageMyAccountPage maccp=new ManageMyAccountPage();
 		HomePage.homePage();
 		// this is for click dashboard in homepage
 		dashboardPage.dashboard.click();
@@ -60,6 +61,8 @@ public class ManageMyAccount extends TestBase {
 	//SPA 422 - Mammadova
 	@Test
 	public void negativeTransferFund() throws InterruptedException{
+		DashboardPage dashboardPage =  new DashboardPage();
+		ManageMyAccountPage maccp=new ManageMyAccountPage();
 		HomePage.homePage();
 		// this is for click dashboard in homepage
 		dashboardPage.dashboard.click();

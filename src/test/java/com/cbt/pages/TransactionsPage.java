@@ -67,5 +67,11 @@ public class TransactionsPage {
 	@FindBy(id = "submitDone")
 	public WebElement submitDone;
 	
+	
+	@FindBy(xpath="//span[@class='icon']/../../../td/span/a")
+	public List<WebElement> finderExistingCatogory;
+	
+	
+	
 }
 

@@ -1,5 +1,7 @@
 package com.cbt.tests.transaction;
 import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
@@ -9,13 +11,14 @@ import com.cbt.pages.HomePage;
 import com.cbt.pages.TransactionsPage;
 import com.cbt.tests.TestBase;
 import com.cbt.utilities.BrowserUtils;
+import com.cbt.utilities.Driver;
 
 public class Transaction extends TestBase {
 
 	// Huseyin test3 - It is adding existing category
 
 	@Test()
-	public void addExistinCategory() {
+	public void addExistingCategory() {
 		WebElement lastone = null;
 		extentLogger = report.createTest("Adding existing category");
 		// Add a transaction first
@@ -43,26 +46,36 @@ public class Transaction extends TestBase {
 		transactionPage.submitCategory.click();	
 		
 		//Existing notfy  text 
-		
-		String expected = "Category already exists.";
+		BrowserUtils.waitFor(1);
 		String actual= transactionPage.textExistingCategory.getText();
+		String expected = "Category already exists.";
 		BrowserUtils.waitFor(3);
 		Assert.assertEquals(actual, expected);
 		BrowserUtils.waitFor(3);
 		//Delete Existing one for running again
-		for(WebElement list : transactionPage.deleteExistingLastCategory ) {
-			 lastone = list;
+		String path = null;
+		int count = 0;
+		for (WebElement listEx : transactionPage.finderExistingCatogory) {
+			count++;
+			if(listEx.getText().equals("TestDuplicateCategory")){
+			System.out.println(listEx.getText()+ " :"+count);
+			break;
+			}
 		}
+		path = "(//span[@class='icon']/../../../td/a[@class='delete_category'])["+count+"]";
+		lastone = Driver.getDriver().findElement(By.xpath(path));
+		
 		 lastone.click();
 		 BrowserUtils.waitFor(3);
 		 transactionPage.okDeleteExistingLastCategory.click();
 		 BrowserUtils.waitFor(3);
 		 
-
+	
 		 }
 	
 	    // SPA-835, Aizada.  ---Adding existing tag, negative test---
-	     @Test
+	    
+	@Test
 	     public void addingExistingNegativeTag()  {
 	    	 HomePage.homePage();
 	 	 TransactionsPage transactionPage = new TransactionsPage();
