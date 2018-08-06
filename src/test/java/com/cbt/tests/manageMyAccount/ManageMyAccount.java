@@ -24,8 +24,9 @@ public class ManageMyAccount extends TestBase {
 	
 	
 	//akmal
-	@Test()
+	@Test(priority = 16, groups= {"smoke","regression"})
 	public void dashboardLink() throws InterruptedException{
+		extentLogger = report.createTest("Dashboard Link");
 		DashboardPage dashboardPage =  new DashboardPage();
 		ManageMyAccountPage maccp=new ManageMyAccountPage();
 		HomePage.homePage();
@@ -55,12 +56,13 @@ public class ManageMyAccount extends TestBase {
 		
 		//this is for clicking the submit button in account page
 		maccp.submitButton.click();
-
+		extentLogger.pass("Verified log out link displayed");
 	}
 	
 	//SPA 422 - Mammadova
-	@Test
+	@Test(priority = 17, groups= {"regression"})
 	public void negativeTransferFund() throws InterruptedException{
+		extentLogger = report.createTest("Transfer Fund-Negative");
 		DashboardPage dashboardPage =  new DashboardPage();
 		ManageMyAccountPage maccp=new ManageMyAccountPage();
 		HomePage.homePage();
@@ -93,7 +95,8 @@ public class ManageMyAccount extends TestBase {
 	
 		BrowserUtils.waitFor(2);
 		assertEquals(driver.findElement(By.xpath("//div[@id='transfer_funds_errors']")).getText(),"Please select a different account for transfer.");
-		
+		extentLogger.pass("Verified log out link displayed");
+
 	
 	}
 }

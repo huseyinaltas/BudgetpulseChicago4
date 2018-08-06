@@ -10,11 +10,12 @@ import com.cbt.tests.TestBase;
 
 public class RecentTransactions extends TestBase{
 
-	DashboardPage dashboardPage =  new DashboardPage();
 
 	//SPA 707 - Mammadova
-		@Test
-		public void negativeTransferFund() throws InterruptedException{
+		@Test(priority = 19, groups= {"regression"})
+		public void negativeTransferFund2() throws InterruptedException{
+			extentLogger = report.createTest("TransferFund-Negative");
+			DashboardPage dashboardPage =  new DashboardPage();
 			HomePage.homePage();
 			// this is for click dashboard in homepage
 			dashboardPage.dashboard.click();
@@ -25,9 +26,9 @@ public class RecentTransactions extends TestBase{
 			dashboardPage.transactionDescription.sendKeys("Tom's first two week salary");
 			dashboardPage.transactionAmount.sendKeys("2500");
 			dashboardPage.selectTransactionAccount("BofA");
-			dashboardPage.submitDone.click();
-			
+			dashboardPage.submitDone.click();	
 			assertEquals(dashboardPage.transactionDescriptionInTable.getText(),"Tom's first two week salary");
-			
+			extentLogger.pass("Verified log out link displayed");
+
 		}
 }

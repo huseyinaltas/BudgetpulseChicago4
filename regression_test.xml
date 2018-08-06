@@ -1,8 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="All Tests" verbose="2">
+<suite name="Regression tests" verbose="2">
 
-
-	<test name="All Tests">
+	<test name="Regression tests">
 		<groups>
 			<run>
 				<include name="regression"></include>
@@ -14,8 +13,8 @@
            	<class name="com.cbt.tests.budget.Budget"></class>
            	<class name="com.cbt.tests.manageMyAccount.ManageMyAccount"></class>
            	<class name="com.cbt.tests.transaction.AddBudgetItem"></class>
-			<class name="com.cbt.tests.transaction.Transaction"></class>
            	<class name="com.cbt.tests.transaction.RecentTransactions"></class>       
+			<class name="com.cbt.tests.transaction.Transaction"></class>
 		</classes>
 	</test>
 

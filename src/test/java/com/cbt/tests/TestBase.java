@@ -23,9 +23,9 @@ public abstract class TestBase {
 	protected WebDriver driver;
 	protected Actions actions;
 
-	protected ExtentReports report;
-	protected ExtentHtmlReporter htmlReporter;
-	protected ExtentTest extentLogger;
+	protected static ExtentReports report;
+	protected static ExtentHtmlReporter htmlReporter;
+	protected static ExtentTest extentLogger;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUpTest() {

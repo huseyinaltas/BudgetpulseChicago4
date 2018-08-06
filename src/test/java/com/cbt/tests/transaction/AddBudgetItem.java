@@ -12,13 +12,14 @@ import com.cbt.utilities.BrowserUtils;
 
 public class AddBudgetItem extends TestBase{
 
-	DashboardPage dashboardPage =  new DashboardPage();
-	BudgetPage budgetPage = new BudgetPage();
 
 	//SPA 831 - Mammadova
 	
-		@Test
-		public void negativeTransferFund() throws InterruptedException{
+		@Test(priority = 18, groups= {"regression"})
+		public void negativeTransferFund1() throws InterruptedException{
+			extentLogger = report.createTest("Transferfund-Positive");
+			DashboardPage dashboardPage =  new DashboardPage();
+			BudgetPage budgetPage = new BudgetPage();
 			HomePage.homePage();
 			// this is for click dashboard in homepage
 			dashboardPage.dashboard.click();
@@ -31,6 +32,7 @@ public class AddBudgetItem extends TestBase{
 			budgetPage.budgetSubmit.click();
 			
 			assertEquals(budgetPage.budgetErrorMessage.getText(), "Category already exists");
+			extentLogger.pass("Verified log out link displayed");
 		}
 		
 		

@@ -16,11 +16,10 @@ import com.cbt.utilities.Driver;
 public class Transaction extends TestBase {
 
 	// Huseyin test3 - It is adding existing category
-
-	@Test()
+	@Test(priority = 20, groups= {"regression"})
 	public void addExistingCategory() {
-		WebElement lastone = null;
 		extentLogger = report.createTest("Adding existing category");
+		WebElement lastone = null;
 		// Add a transaction first
 		HomePage.homePage();
 		TransactionsPage transactionPage = new TransactionsPage();
@@ -69,15 +68,17 @@ public class Transaction extends TestBase {
 		 BrowserUtils.waitFor(3);
 		 transactionPage.okDeleteExistingLastCategory.click();
 		 BrowserUtils.waitFor(3);
-		 
+		extentLogger.pass("Verified log out link displayed");
+
 	
 		 }
 	
-	    // SPA-835, Aizada.  ---Adding existing tag, negative test---
-	    
-	@Test
+	
+	 // SPA-835, Aizada.  ---Adding existing tag, negative test---
+	@Test(priority = 21, groups= {"regression"})
 	     public void addingExistingNegativeTag()  {
-	    	 HomePage.homePage();
+		extentLogger = report.createTest("Adding existing Tag-Negative");
+		 HomePage.homePage();
 	 	 TransactionsPage transactionPage = new TransactionsPage();
 	 	 transactionPage.transactionPage.click();
 	 	 BrowserUtils.waitFor(1);
@@ -89,10 +90,17 @@ public class Transaction extends TestBase {
 	 	 transactionPage.submitTag.click();
          String actualAlert =  transactionPage.errorAlert.getText();
          String expectedAlert = "Tag already exists.";
-         Assert.assertEquals(actualAlert, expectedAlert);
-	 	 
-	     }
-	     
-	
+         Assert.assertEquals(actualAlert, expectedAlert);   
+ 		BrowserUtils.waitFor(3); 
+		Driver.getDriver().get("file:///Users/huseyinaltas/Desktop/Html/actual.html");
+		BrowserUtils.waitFor(5);
+		Driver.getDriver().findElement(By.id("a")).click();
+		BrowserUtils.waitFor(10);
+
+		extentLogger.pass("Verified log out link displayed");
+		
+		
+	}
+
 
 }
