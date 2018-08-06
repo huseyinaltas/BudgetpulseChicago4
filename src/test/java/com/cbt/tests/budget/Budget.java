@@ -13,7 +13,7 @@ import com.cbt.utilities.BrowserUtils;
 public class Budget extends TestBase {
 	
 // SPA-685  Aizada --Add new budget to the item
-	
+
 	@Test
 	public void addNewBudjetItem()  {
 		HomePage.homePage();
@@ -43,17 +43,16 @@ public class Budget extends TestBase {
         Assert.assertTrue(bPage.income.isDisplayed());
 		bPage.greenBtn.click();
 		Assert.assertTrue(bPage.greenBtn.isDisplayed());
+		bPage.incomeSelect.click();
 		bPage.category.sendKeys("net salary");
 		bPage.budgetAmount.sendKeys("5000");
 		bPage.submitBtn.click();
-		String actualAmount = bPage.totalBudget.getText();
-		System.out.println(bPage.totalBudget.getText());
-		String expectedAmount = "$5,000.00";
-		Assert.assertEquals(actualAmount, expectedAmount);
-		bPage.dashboard.click();
-		String actualBudgeted = bPage.netSalaryBudgeted.getText();
-		String expectedBudgeted = "Budgeted: $5,000.00";
+		bPage.incomePanel.click();
+		BrowserUtils.waitFor(3);
+		String actualBudgeted = bPage.incomeBudgetAmount.getText();
+		String expectedBudgeted = "$5,000.00";
 		Assert.assertEquals(actualBudgeted, expectedBudgeted);
+		
 		}
 	}
 
